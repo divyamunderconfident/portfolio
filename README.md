@@ -2,7 +2,7 @@
 
 Divyam Saini's personal portfolio. Next.js (App Router) + TypeScript + Tailwind, deployed on Vercel.
 
-**Live:** https://divyam-saini-portfolio.vercel.app
+**Live:** https://divyams-portfolio.vercel.app
 
 ## Adding a project
 

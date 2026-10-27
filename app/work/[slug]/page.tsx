@@ -7,7 +7,6 @@ import { Progress } from "@/components/Motion";
 import { Button, Corner, Text } from "@/components/ui";
 import { BrowserFrame } from "@/components/work";
 
-export const dynamicParams = false;
 export const generateStaticParams = () => caseStudies.map((p) => ({ slug: p.slug }));
 
 export async function generateMetadata({ params }: PageProps<"/work/[slug]">): Promise<Metadata> {

@@ -50,7 +50,7 @@ function Hero() {
     <section aria-label="Intro" className="flex flex-wrap gap-6">
       <SiteNav />
 
-      <article className="relative flex min-h-[600px] flex-[1_1_320px] flex-col gap-5 overflow-hidden rounded-[28px] bg-accent px-6 pt-7 pb-8 text-white sm:max-w-[460px] sm:px-8 lg:min-h-[640px]">
+      <article className="relative flex min-h-[600px] flex-[1_1_320px] flex-col gap-5 overflow-hidden rounded-[28px] bg-accent px-6 pt-7 pb-8 text-white sm:px-8 lg:max-w-[460px] lg:min-h-[640px]">
         <span className="-mt-7 -ml-6 inline-flex items-center gap-2 self-start rounded-br-2xl bg-bg py-3.5 pr-[22px] pl-6 font-sora text-sm font-semibold text-ink sm:-ml-8 sm:pl-8">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
             <path d="M7 1v12M1 7h12M3 3l8 8M11 3l-8 8" stroke="currentColor" strokeWidth="1.6" />

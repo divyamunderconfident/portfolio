@@ -137,10 +137,10 @@ export function VentureCard({ project }: { project: Project }) {
           <Image src="/trido-logo.png" alt="Trido Rentals logo" width={44} height={44} className="rounded-full" />
         </div>
       </div>
-      <div className="flex min-w-0 flex-[1_1_320px] flex-col gap-3 text-[#16161A]">
+      <div className="flex min-w-0 flex-[1_1_380px] flex-col gap-3 text-[#16161A]">
         {project.stats.map((s, i) => (
-          <div key={s.label} className={`flex min-h-[116px] flex-1 items-end justify-between gap-4 rounded-[22px] px-[26px] py-[22px] ${tints[i]}`}>
-            <span className="font-sora text-[clamp(36px,4vw,60px)] leading-none font-semibold tracking-[-0.04em] whitespace-nowrap">{s.value}</span>
+          <div key={s.label} className={`flex min-h-[116px] flex-1 flex-wrap items-end justify-between gap-x-4 gap-y-1 rounded-[22px] px-[26px] py-[22px] ${tints[i]}`}>
+            <span className="font-sora text-[clamp(36px,3.6vw,52px)] leading-none font-semibold tracking-[-0.04em] whitespace-nowrap">{s.value}</span>
             <span className="max-w-[14ch] text-right text-[15px] leading-[1.3]">
               {s.label}
               <br />

@@ -1,3 +1,8 @@
+import {
+  siGithubactions, siGooglegemini, siHuggingface, siJavascript, siModelcontextprotocol, siNextdotjs,
+  siNodedotjs, siOllama, siPython, siReact, siRust, siSqlite, siTailwindcss, siTypescript, siVercel,
+} from "simple-icons";
+
 // Personal details. `null` = not provided yet; the site shows a clearly marked placeholder.
 export const site = {
   name: "Divyam Saini",
@@ -36,3 +41,9 @@ export const gallery = ["#A9DDD3", "#FFC66E", "#B9B1EE", "#F2B7EF", "#D9D7E6", "
   src: null as string | null,
   caption: "[CAPTION]",
 }));
+
+// Tech marquee in the skills tile. Logos: Simple Icons (CC0).
+export const tech = [
+  siTypescript, siJavascript, siPython, siRust, siNodedotjs, siModelcontextprotocol, siNextdotjs, siReact,
+  siTailwindcss, siSqlite, siHuggingface, siGooglegemini, siOllama, siGithubactions, siVercel,
+].map(({ title, path, hex }) => ({ title: title === "Model Context Protocol" ? "MCP" : title, path, hex }));

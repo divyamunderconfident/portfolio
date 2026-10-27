@@ -47,11 +47,12 @@ export type Project = {
   dark?: boolean;
   signature: Signature;
   caseStudy?: CaseStudy;
+  hidden?: boolean; // keep the entry but leave it off the site
 };
 
 const SOLO = "Solo: PRD, design, build, evaluation, launch";
 
-export const projects: Project[] = [
+const allProjects: Project[] = [
   {
     slug: "trido",
     name: "Trido Rentals",
@@ -447,9 +448,11 @@ export const projects: Project[] = [
     tint: "#55555B",
     dark: true,
     signature: "panel",
+    hidden: true,
   },
 ];
 
+export const projects = allProjects.filter((p) => !p.hidden);
 export const aiProjects = projects.filter((p) => p.kind === "ai");
 export const ventures = projects.filter((p) => p.kind === "venture");
 export const caseStudies = projects.filter((p) => p.caseStudy);

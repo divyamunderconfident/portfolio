@@ -19,16 +19,18 @@ export default function Home() {
             {ventures.length} venture · {aiProjects.length} AI products
           </span>
         </div>
-        {ventures.map((p) => (
-          <VentureCard key={p.slug} project={p} />
-        ))}
-        <div id="ai-products" className="mt-5 flex scroll-mt-6 flex-wrap items-baseline justify-between gap-2">
+        <div id="ai-products" className="flex scroll-mt-6 flex-wrap items-baseline justify-between gap-2">
           <h3 className="m-0 font-sora text-[32px] font-semibold tracking-[-0.03em]">AI products</h3>
           <span className="text-[15px] text-grey">Built solo · all live</span>
         </div>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(390px,100%),1fr))] gap-5">
           {aiProjects.map((p, i) => (
             <ProjectCard key={p.slug} project={p} index={i + 1} />
+          ))}
+        </div>
+        <div className="mt-5 flex flex-col gap-7">
+          {ventures.map((p) => (
+            <VentureCard key={p.slug} project={p} />
           ))}
         </div>
       </section>

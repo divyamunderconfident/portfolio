@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { projects, skills, skillId, type Project } from "@/content/projects";
+import { tech } from "@/content/site";
 import { Signature } from "./Signature";
 import { Arrow, Button, Corner, Pill, Text } from "./ui";
 
@@ -195,6 +196,25 @@ export function SkillsTile() {
           </li>
         ))}
       </ul>
+      <div className="flex flex-col gap-3 border-t border-dashed border-[#16161A40] pt-4">
+        <h3 className="m-0 font-sora text-lg font-semibold tracking-[-0.02em]">Tech I build with</h3>
+        <div className="marquee -mx-6 overflow-hidden px-6">
+          <div className="marquee-track flex w-max">
+            {[0, 1].map((copy) => (
+              <ul key={copy} aria-hidden={copy === 1 || undefined} aria-label={copy ? undefined : "Tech"} className="m-0 flex list-none gap-3 p-0 pr-3">
+                {tech.map((t) => (
+                  <li key={t.title} className="flex h-[92px] w-[92px] shrink-0 flex-col items-center justify-center gap-2 rounded-2xl bg-white p-2 text-center">
+                    <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" fill={`#${t.hex}`}>
+                      <path d={t.path} />
+                    </svg>
+                    <span className="text-[11px] leading-tight font-medium">{t.title}</span>
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

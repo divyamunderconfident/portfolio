@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { aiProjects, ventures } from "@/content/projects";
 
 export const alt = "Divyam Saini — AI products, built and proven";
 export const size = { width: 1200, height: 630 };
@@ -25,7 +26,7 @@ export default function OpengraphImage() {
             {tile("#B9B1EE", 153, 140)}
             {tile("#F2B7EF", 153, 140)}
           </div>
-          <div style={{ fontSize: 22, color: "#55555B" }}>1 venture · 5 AI products</div>
+          <div style={{ fontSize: 22, color: "#55555B" }}>{`${ventures.length} venture · ${aiProjects.length} AI products`}</div>
         </div>
       </div>
     ),

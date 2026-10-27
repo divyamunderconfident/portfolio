@@ -1,0 +1,395 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f1f1f3;
+  --ink: #16161a;
+  --grey: #55555b;
+  --surface: #ffffff;
+  --line: rgba(22, 22, 26, 0.14);
+  --accent: #6560cf;
+  --accent-ink: #4a45b5;
+  --tile-dark: #16161a;
+  --chip: #e4e4e9;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e0e10;
+    --ink: #f1f1f3;
+    --grey: #a6a6b0;
+    --surface: #1a1a1f;
+    --line: rgba(241, 241, 243, 0.16);
+    --accent-ink: #b9b1ee;
+    --tile-dark: #1c1c22;
+    --chip: #26262d;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-ink: var(--ink);
+  --color-grey: var(--grey);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-tile-dark: var(--tile-dark);
+  --color-chip: var(--chip);
+  --color-mint: #a9ddd3;
+  --color-sun: #ffc66e;
+  --color-lav: #9c8fe0;
+  --color-lav2: #b9b1ee;
+  --color-pink: #f2b7ef;
+  --color-violet: #d9d4fb;
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+  --font-sora: var(--font-sora), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+}
+
+@layer base {
+html {
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+}
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.on-dark :focus-visible,
+.on-dark:focus-visible {
+  outline-color: #ffc66e;
+}
+::selection {
+  background: #d9d4fb;
+  color: #16161a;
+}
+
+}
+
+/* Placeholder marker for anything still to be filled in */
+.ph {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: repeating-linear-gradient(-45deg, rgba(255, 198, 110, 0.35) 0 6px, transparent 6px 12px);
+  border-radius: 4px;
+  padding: 0 0.3em;
+}
+
+/* Stretched link: the whole card is clickable, inner links stay on top */
+.stretch::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 1;
+}
+.above {
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- Motion (all off under reduced motion) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(0.4em);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .line-reveal > * {
+    display: block;
+    animation: rise 750ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  .line-reveal > :nth-child(2) {
+    animation-delay: 130ms;
+  }
+  .line-reveal > :nth-child(3) {
+    animation-delay: 260ms;
+  }
+
+  /* Only hide when JS is there to reveal it again */
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 700ms ease,
+      transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .js .reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  .lift {
+    transition:
+      transform 300ms ease,
+      box-shadow 300ms ease;
+  }
+  @media (hover: hover) {
+    .lift:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 24px 48px -30px rgba(40, 30, 90, 0.45);
+    }
+  }
+
+  .role-word {
+    transition: transform 500ms cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .magnetic {
+    transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+}
+
+/* ---------- Custom cursor ---------- */
+.cursor {
+  display: none;
+}
+html.has-cursor .cursor {
+  display: block;
+}
+html.has-cursor,
+html.has-cursor * {
+  cursor: none;
+}
+html.has-cursor :is(p, li, dd, dt, blockquote, figcaption, h1, h2, h3, h4, td, input, textarea, [contenteditable]) {
+  cursor: text;
+}
+html.has-cursor :is(a, button, label, summary, [data-cursor]),
+html.has-cursor :is(a, button, label, summary, [data-cursor]) * {
+  cursor: none;
+}
+html.has-cursor :is(input, textarea, [contenteditable]) {
+  cursor: text;
+}
+.cursor-dot,
+.cursor-ring,
+.cursor-fill,
+.cursor-label {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 100;
+  will-change: transform;
+}
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background: #fff;
+  mix-blend-mode: difference;
+}
+.cursor-ring,
+.cursor-fill {
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border-radius: 999px;
+}
+.cursor-ring {
+  border: 1.5px solid #fff;
+  mix-blend-mode: difference;
+  transition:
+    width 250ms ease,
+    height 250ms ease,
+    margin 250ms ease,
+    opacity 200ms ease;
+}
+.cursor-fill {
+  background: var(--accent);
+  opacity: 0;
+  transition:
+    width 250ms ease,
+    height 250ms ease,
+    margin 250ms ease,
+    opacity 250ms ease;
+}
+.cursor-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  margin: -18px 0 0 -44px;
+  width: 88px;
+  border-radius: 999px;
+  background: #16161a;
+  color: #fff;
+  font: 600 13px/1 var(--font-sans);
+  opacity: 0;
+  transform-origin: center;
+  transition: opacity 200ms ease;
+}
+.cursor[data-state="link"] .cursor-ring,
+.cursor[data-state="link"] .cursor-fill {
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+}
+.cursor[data-state="link"] .cursor-fill {
+  opacity: 0.28;
+}
+.cursor:is([data-state="view"], [data-state="pause"]) .cursor-label {
+  opacity: 1;
+}
+.cursor:is([data-state="view"], [data-state="pause"]) :is(.cursor-ring, .cursor-dot) {
+  opacity: 0;
+}
+.cursor[data-state="text"],
+.cursor[data-hidden="true"] {
+  opacity: 0;
+}
+.cursor {
+  transition: opacity 200ms ease;
+}
+.cursor[data-down="true"] :is(.cursor-ring, .cursor-fill) {
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+}
+
+/* ---------- Signature animations ----------
+   The base styles are the finished composition (the static version under reduced motion).
+   Keyframes run only while the card is hovered (desktop) or in view (touch). */
+.sig:not([data-play="true"]) * {
+  animation: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sig * {
+    animation: none !important;
+  }
+}
+@keyframes sig-cluster {
+  0%,
+  10% {
+    transform: translate(var(--fx), var(--fy));
+  }
+  45%,
+  100% {
+    transform: none;
+  }
+}
+@keyframes sig-bar {
+  0%,
+  40% {
+    transform: scaleX(0);
+  }
+  70%,
+  100% {
+    transform: scaleX(1);
+  }
+}
+@keyframes sig-tick {
+  0%,
+  35% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  50%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes sig-grow-y {
+  0%,
+  15% {
+    transform: scaleY(0.19);
+  }
+  60%,
+  100% {
+    transform: scaleY(1);
+  }
+}
+@keyframes sig-draw {
+  0%,
+  10% {
+    stroke-dashoffset: 1;
+  }
+  60%,
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes sig-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.6);
+    opacity: 0.4;
+  }
+}
+@keyframes sig-ticker {
+  0%,
+  16% {
+    transform: translateY(0);
+  }
+  25%,
+  41% {
+    transform: translateY(-12.5%);
+  }
+  50%,
+  66% {
+    transform: translateY(-25%);
+  }
+  75%,
+  91% {
+    transform: translateY(-37.5%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+@keyframes sig-move {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+.sig .a-cluster {
+  animation: sig-cluster 4s cubic-bezier(0.6, 0, 0.3, 1) infinite alternate;
+}
+.sig .a-bar {
+  transform-origin: left center;
+  animation: sig-bar 4s ease-out infinite alternate;
+}
+.sig .a-tick {
+  animation: sig-tick 4s ease-out infinite alternate;
+}
+.sig .a-grow-y {
+  transform-origin: bottom center;
+  transform-box: fill-box;
+  animation: sig-grow-y 3.2s cubic-bezier(0.6, 0, 0.3, 1) infinite alternate;
+}
+.sig .a-draw {
+  stroke-dasharray: 1;
+  animation: sig-draw 3.6s ease-in-out infinite alternate;
+}
+.sig .a-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sig-pulse 1.6s ease-in-out infinite;
+}
+.sig .a-ticker {
+  animation: sig-ticker 8s cubic-bezier(0.7, 0, 0.3, 1) infinite;
+}
+.sig .a-move {
+  animation: sig-move 6s linear infinite;
+}

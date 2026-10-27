@@ -1,7 +1,7 @@
 // Personal details. `null` = not provided yet; the site shows a clearly marked placeholder.
 export const site = {
   name: "Divyam Saini",
-  url: "https://divyam-portfolio.vercel.app",
+  url: "https://divyam-saini-portfolio.vercel.app",
   email: null as string | null, // e.g. "you@example.com"
   linkedin: null as string | null, // e.g. "https://www.linkedin.com/in/…"
   github: "https://github.com/divyamunderconfident",

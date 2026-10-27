@@ -12,10 +12,6 @@ export default function Home() {
     <main id="main" className="mx-auto flex max-w-[1360px] flex-col gap-24 px-4 pt-6 pb-12 sm:px-8 sm:pt-10">
       <Hero />
 
-      <p className="reveal m-0 max-w-[22ch] font-sora text-[clamp(30px,4vw,56px)] leading-[1.05] font-semibold tracking-[-0.035em]">
-        AI <span className="text-accent-ink">×</span> Product — I build the thing, and I prove it works.
-      </p>
-
       <section id="work" aria-labelledby="work-title" className="flex scroll-mt-6 flex-col gap-7">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <Heading id="work-title">Work</Heading>

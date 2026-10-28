@@ -106,7 +106,7 @@ function Hero() {
           <div className="relative flex flex-col gap-6 rounded-3xl border border-line bg-surface p-6 sm:p-9 @min-[540px]:col-span-2 @min-[820px]:col-span-3">
             <RotatingRole roles={site.roles} />
             <p className="m-0 font-sora text-[clamp(20px,2.4vw,30px)] leading-[1.15] font-semibold tracking-[-0.025em]">
-              I build AI products and prove they work.
+              I build products and prove they work.
             </p>
             <div className="flex flex-wrap gap-3">
               <Button href="#work" variant="accent">See my work</Button>
@@ -126,7 +126,7 @@ function Hero() {
             </div>
             <div className="flex flex-1 flex-col justify-center bg-lav px-6 py-[22px]">
               <span className="font-sora text-[44px] leading-none font-semibold tracking-[-0.03em]">{aiProjects.length}</span>
-              <span>AI products shipped</span>
+              <span>products shipped</span>
             </div>
           </div>
 
@@ -214,10 +214,10 @@ function About() {
         <div className="reveal flex flex-col gap-5">
           <span className="font-mono text-xs text-grey">About me</span>
           <h2 id="about-title" className="m-0 max-w-[20ch] font-sora text-[clamp(32px,4vw,56px)] leading-[1.02] font-semibold tracking-[-0.035em]">
-            An engineer who got hooked on building AI products.
+            An engineer who got hooked on building products.
           </h2>
           <p className="m-0 max-w-[60ch] text-[17px] leading-relaxed">
-            I study civil engineering at IIT Roorkee, and somewhere along the way I got hooked on building AI products. I learn by shipping: every project starts as a PRD and ends as a live site with real data behind it, and an honest list of what didn’t work.
+            I study civil engineering at IIT Roorkee, and somewhere along the way I got hooked on building products. I learn by shipping: every project starts as a PRD and ends as a live site with real data behind it, and an honest list of what didn’t work.
           </p>
           <p className="m-0 max-w-[60ch] text-[17px] leading-relaxed">
             I’m the Convener of E-Summit ’27 at IIT Roorkee’s Entrepreneurship Cell, and I’ve interned in the Founders’ Office at HeadsUp AI and in market research at DGTLmart.

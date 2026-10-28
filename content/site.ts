@@ -13,7 +13,7 @@ export const site = {
   resume: "/resume.pdf",
   photo: "/profile.png" as string | null, // background-removed cutout; null shows the placeholder
   roles: ["AI Engineer", "Product Manager", "Product Strategist", "AI Researcher", "Founder", "Builder"],
-  bio: "I build AI products end to end and measure whether they work. Co-founder of Trido Rentals. IIT Roorkee ’28.",
+  bio: "I build products end to end and measure whether they work. Co-founder of Trido Rentals. IIT Roorkee ’28.",
 };
 
 export const steps = [
@@ -34,7 +34,7 @@ export const experience: Experience[] = [
     dates: "May 2026 – June 2026",
     stats: [
       { value: "10,000+", label: "users on the top app I led" },
-      { value: "5+", label: "AI products owned" },
+      { value: "5+", label: "products owned" },
       { value: "4+", label: "product launches" },
     ],
   },

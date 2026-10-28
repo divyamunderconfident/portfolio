@@ -10,13 +10,13 @@ const dmSans = DM_Sans({ variable: "--font-dm-sans", subsets: ["latin"] });
 const plexMono = IBM_Plex_Mono({ variable: "--font-plex-mono", subsets: ["latin"], weight: ["400", "500"] });
 
 const description =
-  "Divyam Saini builds AI products end to end: PRD, design, build, evaluation on real data, launch. Co-founder of Trido Rentals, IIT Roorkee.";
+  "Divyam Saini builds products end to end: PRD, design, build, evaluation on real data, launch. Co-founder of Trido Rentals, IIT Roorkee.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: { default: "Divyam", template: "%s — Divyam" },
   description,
-  openGraph: { title: "Divyam Saini — AI products, built and proven", description, url: "/", siteName: "Divyam Saini", type: "website" },
+  openGraph: { title: "Divyam Saini — products, built and proven", description, url: "/", siteName: "Divyam Saini", type: "website" },
   twitter: { card: "summary_large_image" },
 };
 

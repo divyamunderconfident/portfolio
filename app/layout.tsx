@@ -14,7 +14,7 @@ const description =
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: { default: "Divyam Saini — AI products, built and proven", template: "%s — Divyam Saini" },
+  title: { default: "Divyam", template: "%s — Divyam" },
   description,
   openGraph: { title: "Divyam Saini — AI products, built and proven", description, url: "/", siteName: "Divyam Saini", type: "website" },
   twitter: { card: "summary_large_image" },

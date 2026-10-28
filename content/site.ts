@@ -8,7 +8,7 @@ export const site = {
   name: "Divyam Saini",
   url: "https://divyams-portfolio.vercel.app",
   email: "divyam_s1@ce.iitr.ac.in" as string | null,
-  linkedin: null as string | null, // e.g. "https://www.linkedin.com/in/…"
+  linkedin: "https://www.linkedin.com/in/divyamsaini2712/" as string | null,
   github: "https://github.com/divyamunderconfident",
   resume: "/resume.pdf",
   photo: "/profile.png" as string | null, // background-removed cutout; null shows the placeholder

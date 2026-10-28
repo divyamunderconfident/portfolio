@@ -115,9 +115,6 @@ export function VentureCard({ project }: { project: Project }) {
         <p className="m-0 max-w-[54ch] text-base leading-normal text-pretty text-[#C4C4CC]">
           Growth came from partnerships with travel creators on a commission model: they earned a cut of every rental they brought in. My role: product, operations, customer acquisition and creator partnerships.
         </p>
-        <div className="max-w-[420px] overflow-hidden rounded-2xl bg-[#1E1E24]">
-          <Signature kind={project.signature} className="aspect-[16/7]" />
-        </div>
         <ul aria-label="Tags" className="m-0 flex list-none flex-wrap gap-2 p-0">
           {project.tags.map((t) => (
             <li key={t} className="rounded-full bg-[#2A2A30] px-3 py-1 text-[13px]">{t}</li>

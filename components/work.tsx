@@ -237,3 +237,21 @@ export function InternshipCards() {
     </div>
   );
 }
+
+// Teaser for a project that is not live yet, plus a quiet note that more are coming.
+export function UpcomingCard({ project, index }: { project: Project; index: number }) {
+  return (
+    <article className="reveal relative flex flex-col justify-between gap-6 rounded-[28px] border-2 border-dashed border-line p-6 sm:p-[30px]">
+      <div className="flex flex-col gap-4">
+        <span className="flex items-center gap-2 self-start rounded-full bg-chip px-3 py-1 text-[13px] font-semibold">
+          <span aria-hidden="true" className="h-2 w-2 animate-pulse rounded-full bg-accent motion-reduce:animate-none" />
+          {String(index).padStart(2, "0")} · Coming next
+        </span>
+        <h4 className="m-0 font-sora text-[clamp(28px,3vw,36px)] leading-[1.02] font-semibold tracking-[-0.035em]">{project.name}</h4>
+        <p className="m-0 max-w-[40ch] text-base text-pretty text-grey">{project.problem}</p>
+        <p className="m-0 text-[13px] text-grey">{project.tags.join(" · ")}</p>
+      </div>
+      <p className="m-0 font-mono text-[12px] text-grey">…and more in the works.</p>
+    </article>
+  );
+}

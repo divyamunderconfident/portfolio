@@ -3,7 +3,7 @@ import { site } from "@/content/site";
 import { Text } from "./ui";
 
 const links = [
-  { href: "/#ai-products", label: "AI products" },
+  { href: "/#ai-products", label: "Projects" },
   { href: "/#venture", label: "Venture" },
   { href: "/#about", label: "About" },
   { href: "/#contact", label: "Contact" },

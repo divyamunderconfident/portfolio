@@ -47,7 +47,7 @@ export type Project = {
   dark?: boolean;
   signature: Signature;
   caseStudy?: CaseStudy;
-  hidden?: boolean; // keep the entry but leave it off the site
+  hidden?: boolean; // not launched yet: shown only as a "coming next" teaser
 };
 
 const SOLO = "Solo: PRD, design, build, evaluation, launch";
@@ -453,6 +453,7 @@ const allProjects: Project[] = [
 ];
 
 export const projects = allProjects.filter((p) => !p.hidden);
+export const upcoming = allProjects.filter((p) => p.hidden && p.kind === "ai");
 export const aiProjects = projects.filter((p) => p.kind === "ai");
 export const ventures = projects.filter((p) => p.kind === "venture");
 export const caseStudies = projects.filter((p) => p.caseStudy);

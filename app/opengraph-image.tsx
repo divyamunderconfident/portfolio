@@ -26,7 +26,7 @@ export default function OpengraphImage() {
             {tile("#B9B1EE", 153, 140)}
             {tile("#F2B7EF", 153, 140)}
           </div>
-          <div style={{ fontSize: 22, color: "#55555B" }}>{`${ventures.length} venture · ${aiProjects.length} AI products`}</div>
+          <div style={{ fontSize: 22, color: "#55555B" }}>{`${ventures.length} venture · ${aiProjects.length} projects`}</div>
         </div>
       </div>
     ),

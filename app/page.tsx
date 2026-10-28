@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { aiProjects, projects, ventures } from "@/content/projects";
+import { aiProjects, projects, upcoming, ventures } from "@/content/projects";
 import { experience, internships, site, steps } from "@/content/site";
 import { Gallery } from "@/components/Gallery";
 import { RotatingRole } from "@/components/Motion";
 import { Button, Corner, Heading, Text } from "@/components/ui";
-import { InternshipCards, ProjectCard, SkillsTile, VentureCard } from "@/components/work";
+import { InternshipCards, ProjectCard, SkillsTile, UpcomingCard, VentureCard } from "@/components/work";
 import { Contact, Photo, SiteNav } from "@/components/chrome";
 
 export default function Home() {
@@ -16,16 +16,19 @@ export default function Home() {
         <div className="flex flex-wrap items-end justify-between gap-3">
           <Heading id="work-title">Work</Heading>
           <span className="text-[15px] text-grey">
-            {aiProjects.length} AI products · {ventures.length} venture · {internships.length} internships
+            {aiProjects.length} projects · {ventures.length} venture · {internships.length} internships
           </span>
         </div>
         <div id="ai-products" className="flex scroll-mt-6 flex-wrap items-baseline justify-between gap-2">
-          <h3 className="m-0 font-sora text-[32px] font-semibold tracking-[-0.03em]">AI products</h3>
+          <h3 className="m-0 font-sora text-[32px] font-semibold tracking-[-0.03em]">Projects</h3>
           <span className="text-[15px] text-grey">Built solo · all live</span>
         </div>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(390px,100%),1fr))] gap-5">
           {aiProjects.map((p, i) => (
             <ProjectCard key={p.slug} project={p} index={i + 1} />
+          ))}
+          {upcoming.map((p, i) => (
+            <UpcomingCard key={p.slug} project={p} index={aiProjects.length + i + 1} />
           ))}
         </div>
         <div className="mt-5 flex flex-col gap-7">

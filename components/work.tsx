@@ -194,13 +194,13 @@ export function SkillsTile() {
         <div className="marquee -mx-6 overflow-hidden px-6">
           <div className="marquee-track flex w-max">
             {[0, 1].map((copy) => (
-              <ul key={copy} aria-hidden={copy === 1 || undefined} aria-label={copy ? undefined : "Tech"} className="m-0 flex list-none gap-3 p-0 pr-3">
+              <ul key={copy} aria-hidden={copy === 1 || undefined} aria-label={copy ? undefined : "Tech"} className="m-0 flex list-none gap-2.5 p-0 pr-2.5">
                 {tech.map((t) => (
-                  <li key={t.title} className="flex h-[92px] w-[92px] shrink-0 flex-col items-center justify-center gap-2 rounded-2xl bg-white p-2 text-center">
-                    <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" fill={`#${t.hex}`}>
+                  <li key={t.title} title={t.title} className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[14px] bg-[#242938]">
+                    <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" fill={t.fill}>
                       <path d={t.path} />
                     </svg>
-                    <span className="text-[11px] leading-tight font-medium">{t.title}</span>
+                    <span className="sr-only">{t.title}</span>
                   </li>
                 ))}
               </ul>

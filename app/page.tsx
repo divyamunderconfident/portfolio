@@ -214,7 +214,7 @@ function About() {
         <div className="reveal flex flex-col gap-5">
           <span className="font-mono text-xs text-grey">About me</span>
           <h2 id="about-title" className="m-0 max-w-[20ch] font-sora text-[clamp(32px,4vw,56px)] leading-[1.02] font-semibold tracking-[-0.035em]">
-            A civil engineer who got hooked on building AI products.
+            An engineer who got hooked on building AI products.
           </h2>
           <p className="m-0 max-w-[60ch] text-[17px] leading-relaxed">
             I study civil engineering at IIT Roorkee, and somewhere along the way I got hooked on building AI products. I learn by shipping: every project starts as a PRD and ends as a live site with real data behind it, and an honest list of what didn’t work.

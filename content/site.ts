@@ -62,7 +62,15 @@ const photos = [
 export const gallery = photos.map((ph, i) => ({ ...ph, tint: ["#A9DDD3", "#FFC66E", "#B9B1EE", "#F2B7EF"][i % 4] }));
 
 // Tech marquee in the skills tile. Logos: Simple Icons (CC0).
+const brightness = (hex: string) => {
+  const [r, g, b] = [0, 2, 4].map((i) => parseInt(hex.slice(i, i + 2), 16));
+  return 0.299 * r + 0.587 * g + 0.114 * b;
+};
 export const tech = [
   siTypescript, siJavascript, siPython, siRust, siNodedotjs, siModelcontextprotocol, siNextdotjs, siReact,
   siTailwindcss, siSqlite, siHuggingface, siGooglegemini, siOllama, siGithubactions, siVercel,
-].map(({ title, path, hex }) => ({ title: title === "Model Context Protocol" ? "MCP" : title, path, hex }));
+].map(({ title, path, hex }) => ({
+  title: title === "Model Context Protocol" ? "MCP" : title,
+  path,
+  fill: brightness(hex) < 70 ? "#FFFFFF" : `#${hex}`, // very dark logos would vanish on the dark tiles
+}));

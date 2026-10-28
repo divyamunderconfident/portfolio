@@ -11,7 +11,7 @@ const links = [
 
 export function SiteNav() {
   return (
-    <nav aria-label="Main" className="-ml-2.5 flex w-full flex-wrap gap-0.5 lg:ml-0 lg:w-auto lg:flex-col lg:justify-around lg:gap-6 lg:py-6">
+    <nav aria-label="Main" className="-ml-2.5 flex w-full flex-wrap gap-0.5 lg:sticky lg:top-6 lg:ml-0 lg:h-[min(calc(100vh-48px),780px)] lg:w-auto lg:flex-col lg:justify-around lg:gap-6 lg:self-start lg:py-6">
       {links.map((l, i) => (
         <a
           key={l.href}

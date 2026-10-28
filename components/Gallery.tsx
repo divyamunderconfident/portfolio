@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { gallery } from "@/content/site";
-import { Text } from "./ui";
 
 export function Gallery() {
   const ref = useRef<HTMLDivElement>(null);
@@ -26,21 +25,22 @@ export function Gallery() {
         className="flex flex-1 snap-x snap-mandatory scroll-px-3 gap-2.5 overflow-x-auto p-3 [scrollbar-width:none]"
       >
         {gallery.map((ph, i) => (
-          <figure
-            key={i}
-            className="relative m-0 flex aspect-[4/3] max-h-[236px] shrink-0 snap-start flex-col items-start gap-1.5 overflow-hidden rounded-2xl p-3.5 text-[#16161A]"
-            style={{ background: ph.tint }}
-          >
-            {ph.src && <Image src={ph.src} alt={ph.alt} fill sizes="320px" className="object-cover object-[50%_30%]" />}
-            <span className={`relative self-start font-mono text-[11px] ${ph.src ? "rounded-full bg-white/85 px-2 py-0.5" : ""}`}>{String(i + 1).padStart(2, "0")} / {String(gallery.length).padStart(2, "0")}</span>
-            <figcaption className={`relative self-start text-[13px] ${ph.src ? "rounded-full bg-white/90 px-2.5 py-1 font-medium" : ""}`}><Text>{ph.caption}</Text></figcaption>
-            {!ph.src && <span className="m-auto text-sm font-semibold"><Text>[PHOTO]</Text></span>}
+          <figure key={i} className="m-0 flex w-[min(300px,78vw)] shrink-0 snap-start flex-col gap-2">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl" style={{ background: ph.tint }}>
+              <Image src={ph.src} alt={ph.alt} fill sizes="300px" className="object-cover object-[50%_30%]" />
+            </div>
+            <figcaption className="flex items-baseline gap-2 px-1 text-[13px] text-white">
+              <span className="font-mono text-[11px] text-[#C4C4CC]">
+                {String(i + 1).padStart(2, "0")} / {String(gallery.length).padStart(2, "0")}
+              </span>
+              <span className="font-medium">{ph.caption}</span>
+            </figcaption>
           </figure>
         ))}
       </div>
-      <div className="pointer-events-none absolute inset-x-6 bottom-[22px] flex items-center justify-between gap-3">
-        <span className="rounded-full bg-[#16161Ad1] px-3 py-1.5 font-mono text-[11px] text-white">Gallery · scroll →</span>
-        <span className="pointer-events-auto flex gap-2">
+      <div className="flex items-center justify-between gap-3 px-4 pb-3">
+        <span className="font-mono text-[11px] text-[#C4C4CC]">Gallery · scroll →</span>
+        <span className="flex gap-2">
           <button type="button" aria-label="Previous photo" onClick={() => scroll(-1)} className={btn} data-magnetic>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.8" /></svg>
           </button>

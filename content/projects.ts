@@ -57,7 +57,7 @@ const allProjects: Project[] = [
     slug: "trido",
     name: "Trido Rentals",
     kind: "venture",
-    status: "Status: [STATUS]",
+    status: "Exited",
     oneLiner:
       "A two-wheeler rental marketplace that helps travellers find and rent bikes and scooters in Uttarakhand’s hill-station towns. Co-founded with a friend; idea to launch in 7 days.",
     problem: "Travellers in Uttarakhand’s hill-station towns need an easy way to find and rent a two-wheeler.",

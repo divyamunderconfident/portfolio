@@ -30,35 +30,33 @@ export const writing = [
   { title: "Beginner notes: How I use LLMs", kind: "Notes", href: null as string | null },
 ];
 
-// Internship details and numbers are from Divyam's resume. Entries with `highlights` also show as cards under Work.
-type Experience = { role: string; org: string; dates: string; stat?: { value: string; label: string }; highlights?: string[] };
+// Internship numbers are from Divyam's resume. Entries with `stats` also show as cards under Work.
+type Experience = { role: string; org: string; dates: string; stats?: { value: string; label: string }[] };
 export const experience: Experience[] = [
   { role: "Convener, E-Summit ’27", org: "Entrepreneurship Cell, IIT Roorkee", dates: "[DATES]" },
   {
     role: "Founders’ Office Intern",
     org: "HeadsUp AI",
     dates: "May 2026 – June 2026",
-    stat: { value: "10,000+", label: "users on the app I led product strategy for" },
-    highlights: [
-      "Built niche SaaS products, owning product development, GTM strategy and growth across 5+ AI products.",
-      "Led product strategy for the highest-performing app, driving user research and growth to 10,000+ users.",
-      "Directed go-to-market through competitor benchmarking and content strategy across 4+ product launches.",
-      "Ran monetization and growth initiatives with other teams to speed up product adoption.",
+    stats: [
+      { value: "10,000+", label: "users on the top app I led" },
+      { value: "5+", label: "AI products owned" },
+      { value: "4+", label: "product launches" },
     ],
   },
   {
     role: "Market Research Intern",
     org: "DGTLmart",
     dates: "July 2025 – September 2025",
-    stat: { value: "10,000+", label: "creators on the influencer marketing platform" },
-    highlights: [
-      "Helped brands discover and collaborate with 10,000+ creators through a centralized influencer marketing platform.",
-      "Researched creator-economy trends and 15+ competitors to design brand funnels with 20+ product initiatives.",
-      "Developed a 90-day GTM roadmap and monetization strategy across SaaS, API and commission-based revenue models.",
+    stats: [
+      { value: "10,000+", label: "creators on the platform" },
+      { value: "15+", label: "competitors researched" },
+      { value: "20+", label: "product initiatives" },
+      { value: "90-day", label: "GTM roadmap" },
     ],
   },
 ];
-export const internships = experience.filter((e) => e.highlights);
+export const internships = experience.filter((e) => e.stats);
 
 // Captions describe only what is visible in each photo; [CAPTION] slots are still to be filled.
 const photos = [

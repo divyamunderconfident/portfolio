@@ -230,17 +230,14 @@ export function InternshipCards() {
             <h4 className="m-0 font-sora text-[clamp(26px,2.6vw,32px)] leading-[1.05] font-semibold tracking-[-0.035em]">{e.org}</h4>
             <p className="m-0 mt-1 text-base font-medium">{e.role}</p>
           </div>
-          {e.stat && (
-            <div className="flex items-baseline gap-3 rounded-[18px] bg-white/55 p-4">
-              <span className="font-sora text-[30px] font-semibold tracking-[-0.03em]">{e.stat.value}</span>
-              <span className="text-[13px] leading-[1.35]">{e.stat.label}</span>
-            </div>
-          )}
-          <ul className="m-0 flex list-disc flex-col gap-2 pl-5 text-[15px] leading-normal">
-            {e.highlights!.map((h) => (
-              <li key={h}>{h}</li>
+          <dl className="m-0 grid grid-cols-[repeat(auto-fit,minmax(min(130px,100%),1fr))] gap-3 [&>div]:min-w-0">
+            {e.stats!.map((st, k) => (
+              <div key={st.label} className={`flex flex-col rounded-[18px] bg-white/55 p-4 ${k === 0 ? "col-span-full" : ""}`}>
+                <dt className="order-2 text-[13px] leading-[1.35]">{st.label}</dt>
+                <dd className={`m-0 font-sora font-semibold tracking-[-0.03em] ${k === 0 ? "text-[clamp(36px,4vw,48px)] leading-none" : "text-[26px]"}`}>{st.value}</dd>
+              </div>
             ))}
-          </ul>
+          </dl>
         </article>
       ))}
     </div>

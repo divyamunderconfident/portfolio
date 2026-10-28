@@ -10,7 +10,7 @@ export const site = {
   email: "divyam_s1@ce.iitr.ac.in" as string | null,
   linkedin: null as string | null, // e.g. "https://www.linkedin.com/in/…"
   github: "https://github.com/divyamunderconfident",
-  resume: "/resume.pdf", // placeholder PDF until the real one replaces public/resume.pdf
+  resume: "/resume.pdf",
   photo: "/profile.png" as string | null, // background-removed cutout; null shows the placeholder
   roles: ["AI Engineer", "Product Manager", "Product Strategist", "AI Researcher", "Founder", "Builder"],
   bio: "I build AI products end to end and measure whether they work. Co-founder of Trido Rentals. IIT Roorkee ’28.",

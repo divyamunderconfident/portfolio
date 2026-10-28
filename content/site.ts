@@ -7,7 +7,7 @@ import {
 export const site = {
   name: "Divyam Saini",
   url: "https://divyams-portfolio.vercel.app",
-  email: null as string | null, // e.g. "you@example.com"
+  email: "divyam_s1@ce.iitr.ac.in" as string | null,
   linkedin: null as string | null, // e.g. "https://www.linkedin.com/in/…"
   github: "https://github.com/divyamunderconfident",
   resume: "/resume.pdf", // placeholder PDF until the real one replaces public/resume.pdf

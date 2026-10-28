@@ -77,95 +77,6 @@ const allProjects: Project[] = [
     signature: "route",
   },
   {
-    slug: "feedback-to-roadmap",
-    name: "Feedback to Roadmap",
-    kind: "ai",
-    status: "Live",
-    oneLiner:
-      "Turns a CSV of reviews, tickets or survey answers into ranked problems, each backed by quotes checked word for word against the source.",
-    problem: "PMs either read thousands of comments by hand or skim them, and chatbot summaries invent themes.",
-    role: SOLO,
-    headline: { value: "3,542", label: "real App Store reviews in the demo" },
-    stats: [
-      { value: "3,542", label: "real App Store reviews in the demo" },
-      { value: "$0", label: "to host: the heavy work runs in your browser" },
-    ],
-    tags: ["Embeddings in the browser", "Clustering", "Grounded LLM output"],
-    skills: ["Product discovery", "LLM engineering", "Evals", "Data analysis"],
-    liveUrl: "https://feedback-to-roadmap-three.vercel.app",
-    githubUrl: "https://github.com/divyamunderconfident/feedback-to-roadmap",
-    tint: "#A9DDD3",
-    signature: "clusters",
-    caseStudy: {
-      pitch: "From messy feedback to ranked problems, with a receipt for every claim.",
-      stack: ["Next.js", "transformers.js", "all-MiniLM-L6-v2", "Ward clustering", "Gemini / Groq", "Python eval"],
-      tldr: {
-        problem: "PMs read thousands of comments by hand or skim them; a quick chatbot summary often invents themes.",
-        built: "A browser app that groups feedback into themes, names them with your own key, and hides any claim whose quote isn’t found word for word.",
-        result: "A demo on 3,542 real App Store reviews of 12 apps; 39.7% macro precision against the AWARE labels at 20 themes.",
-      },
-      problem: [
-        "Feedback piles up in reviews, tickets and survey answers. PMs either read thousands of comments by hand or skim them, and a quick “paste it all into a chatbot” summary often invents themes and misses small but painful ones.",
-        "AI feedback analysis is an active paid market (Dovetail, Enterpret, Unwrap and others). Feedback to Roadmap does the core job for $0, with a receipt behind every claim.",
-      ],
-      who: [
-        "PMs and founders at small startups with no budget for paid feedback tools.",
-        "UX researchers who need a quick first pass over open-text answers.",
-      ],
-      steps: [
-        { title: "Upload", body: "Drop a CSV and pick the text column, plus optional rating, date and segment. The file never leaves your browser." },
-        { title: "Group", body: "Sentences of 5+ words are embedded in a Web Worker, split into 40 small groups and merged step by step (Ward linkage)." },
-        { title: "Name", body: "With your own key, a model gets up to 30 sentences per theme and returns a name, a problem statement and up to 3 quoted claims." },
-        { title: "Check", body: "Every quote must appear word for word in the review it cites; claims that fail are hidden and counted." },
-        { title: "Size and rank", body: "Share, average rating, segments and trend are computed in code, never by the model. Export as Markdown or CSV." },
-      ],
-      decisions: [
-        {
-          chose: "a slider for the number of themes",
-          over: "one fixed number",
-          because: "there is no single right level of detail, so the PM picks it. The AWARE labels favoured 20 over 12, so 20 is the default.",
-        },
-        {
-          chose: "counting only sentences that match the theme’s problem statement (similarity ≥ 0.30)",
-          over: "counting every sentence in the cluster",
-          because: "it keeps the sizes honest; the rest are shown as “loosely related”.",
-        },
-        {
-          chose: "running embeddings in the browser with the visitor’s own key",
-          over: "a hosted backend",
-          because: "it costs $0 to host and the file never leaves the browser.",
-        },
-        {
-          chose: "keeping the threshold at 0.30",
-          over: "the 0.25 that scored best on F1",
-          because: "macro precision barely moved between 0.25 and 0.40, so F1 mostly rewarded recall, and a hand check found sentences near 0.30 mostly off-topic already.",
-        },
-      ],
-      evidence: {
-        stats: [
-          { value: "3,542", label: "real App Store reviews of 12 apps in the demo" },
-          { value: "39.7%", label: "macro precision at 20 themes (36.2% at 12)" },
-          { value: "5,853", label: "of 21,761 sentences link to an AWARE label" },
-          { value: "4.6%", label: "macro recall at 20 themes (3.8% at 12)" },
-        ],
-        body: [
-          "One run on the demo data, themes named by gemini-3.5-flash-lite, scored against the AWARE aspect labels at the site’s threshold of 0.30.",
-          "AWARE’s categories are broad (usability, cost, security…), so these numbers measure agreement with that classification, not whether a theme is right. With 20 themes the biggest mixed themes split into narrower ones, for example “Pricing and subscription models” (63.4% cost at 0.25).",
-        ],
-      },
-      didntWork: [
-        "Similarity is a weak filter: an earlier hand check found sentences near the 0.30 threshold mostly off-topic.",
-        "The quote check proves a quote exists, not that it supports the claim. The share of claims that pass hasn’t been measured yet.",
-        "Some themes are generic (praise, “I’ve used this app for years”), and naming is not deterministic between runs.",
-        "Embedding about 22,000 demo sentences takes a few minutes in the browser, so the demo is precomputed.",
-      ],
-      next: [
-        "Run the hand-labelling tool to check the 0.30 threshold on a labelled sample.",
-        "Measure the share of claims that pass the quote check.",
-      ],
-    },
-  },
-  {
     slug: "overrun",
     name: "Overrun",
     kind: "ai",
@@ -425,6 +336,95 @@ const allProjects: Project[] = [
       next: [
         "Label 50 random classified posts and publish the precision on the site.",
         "Add the planned RSS feed, trend lines and a backtest.",
+      ],
+    },
+  },
+  {
+    slug: "feedback-to-roadmap",
+    name: "Feedback to Roadmap",
+    kind: "ai",
+    status: "Live",
+    oneLiner:
+      "Turns a CSV of reviews, tickets or survey answers into ranked problems, each backed by quotes checked word for word against the source.",
+    problem: "PMs either read thousands of comments by hand or skim them, and chatbot summaries invent themes.",
+    role: SOLO,
+    headline: { value: "3,542", label: "real App Store reviews in the demo" },
+    stats: [
+      { value: "3,542", label: "real App Store reviews in the demo" },
+      { value: "$0", label: "to host: the heavy work runs in your browser" },
+    ],
+    tags: ["Embeddings in the browser", "Clustering", "Grounded LLM output"],
+    skills: ["Product discovery", "LLM engineering", "Evals", "Data analysis"],
+    liveUrl: "https://feedback-to-roadmap-three.vercel.app",
+    githubUrl: "https://github.com/divyamunderconfident/feedback-to-roadmap",
+    tint: "#A9DDD3",
+    signature: "clusters",
+    caseStudy: {
+      pitch: "From messy feedback to ranked problems, with a receipt for every claim.",
+      stack: ["Next.js", "transformers.js", "all-MiniLM-L6-v2", "Ward clustering", "Gemini / Groq", "Python eval"],
+      tldr: {
+        problem: "PMs read thousands of comments by hand or skim them; a quick chatbot summary often invents themes.",
+        built: "A browser app that groups feedback into themes, names them with your own key, and hides any claim whose quote isn’t found word for word.",
+        result: "A demo on 3,542 real App Store reviews of 12 apps; 39.7% macro precision against the AWARE labels at 20 themes.",
+      },
+      problem: [
+        "Feedback piles up in reviews, tickets and survey answers. PMs either read thousands of comments by hand or skim them, and a quick “paste it all into a chatbot” summary often invents themes and misses small but painful ones.",
+        "AI feedback analysis is an active paid market (Dovetail, Enterpret, Unwrap and others). Feedback to Roadmap does the core job for $0, with a receipt behind every claim.",
+      ],
+      who: [
+        "PMs and founders at small startups with no budget for paid feedback tools.",
+        "UX researchers who need a quick first pass over open-text answers.",
+      ],
+      steps: [
+        { title: "Upload", body: "Drop a CSV and pick the text column, plus optional rating, date and segment. The file never leaves your browser." },
+        { title: "Group", body: "Sentences of 5+ words are embedded in a Web Worker, split into 40 small groups and merged step by step (Ward linkage)." },
+        { title: "Name", body: "With your own key, a model gets up to 30 sentences per theme and returns a name, a problem statement and up to 3 quoted claims." },
+        { title: "Check", body: "Every quote must appear word for word in the review it cites; claims that fail are hidden and counted." },
+        { title: "Size and rank", body: "Share, average rating, segments and trend are computed in code, never by the model. Export as Markdown or CSV." },
+      ],
+      decisions: [
+        {
+          chose: "a slider for the number of themes",
+          over: "one fixed number",
+          because: "there is no single right level of detail, so the PM picks it. The AWARE labels favoured 20 over 12, so 20 is the default.",
+        },
+        {
+          chose: "counting only sentences that match the theme’s problem statement (similarity ≥ 0.30)",
+          over: "counting every sentence in the cluster",
+          because: "it keeps the sizes honest; the rest are shown as “loosely related”.",
+        },
+        {
+          chose: "running embeddings in the browser with the visitor’s own key",
+          over: "a hosted backend",
+          because: "it costs $0 to host and the file never leaves the browser.",
+        },
+        {
+          chose: "keeping the threshold at 0.30",
+          over: "the 0.25 that scored best on F1",
+          because: "macro precision barely moved between 0.25 and 0.40, so F1 mostly rewarded recall, and a hand check found sentences near 0.30 mostly off-topic already.",
+        },
+      ],
+      evidence: {
+        stats: [
+          { value: "3,542", label: "real App Store reviews of 12 apps in the demo" },
+          { value: "39.7%", label: "macro precision at 20 themes (36.2% at 12)" },
+          { value: "5,853", label: "of 21,761 sentences link to an AWARE label" },
+          { value: "4.6%", label: "macro recall at 20 themes (3.8% at 12)" },
+        ],
+        body: [
+          "One run on the demo data, themes named by gemini-3.5-flash-lite, scored against the AWARE aspect labels at the site’s threshold of 0.30.",
+          "AWARE’s categories are broad (usability, cost, security…), so these numbers measure agreement with that classification, not whether a theme is right. With 20 themes the biggest mixed themes split into narrower ones, for example “Pricing and subscription models” (63.4% cost at 0.25).",
+        ],
+      },
+      didntWork: [
+        "Similarity is a weak filter: an earlier hand check found sentences near the 0.30 threshold mostly off-topic.",
+        "The quote check proves a quote exists, not that it supports the claim. The share of claims that pass hasn’t been measured yet.",
+        "Some themes are generic (praise, “I’ve used this app for years”), and naming is not deterministic between runs.",
+        "Embedding about 22,000 demo sentences takes a few minutes in the browser, so the demo is precomputed.",
+      ],
+      next: [
+        "Run the hand-labelling tool to check the 0.30 threshold on a labelled sample.",
+        "Measure the share of claims that pass the quote check.",
       ],
     },
   },

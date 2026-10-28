@@ -120,7 +120,7 @@ function Hero() {
             <div className="relative flex flex-1 flex-col justify-center bg-mint px-6 py-[22px]">
               <Corner color="#16161A" />
               <span className="font-sora text-[44px] leading-none font-semibold tracking-[-0.03em]">1,000+</span>
-              <span>customers</span>
+              <span>customers served</span>
             </div>
             <div className="flex flex-1 flex-col justify-center bg-lav px-6 py-[22px]">
               <span className="font-sora text-[44px] leading-none font-semibold tracking-[-0.03em]">{aiProjects.length}</span>

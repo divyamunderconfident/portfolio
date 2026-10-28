@@ -31,9 +31,10 @@ export function Photo({ round = false }: { round?: boolean }) {
       <Image
         src={site.photo}
         alt="Divyam Saini"
-        width={640}
-        height={800}
-        className={`h-full w-full object-cover ${round ? "rounded-full" : ""}`}
+        width={500}
+        height={500}
+        priority={round}
+        className={`h-full w-full bg-[#F2A9F0] object-cover object-bottom ${round ? "rounded-full" : "rounded-[22px]"}`}
       />
     );
   return (

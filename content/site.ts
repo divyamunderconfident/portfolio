@@ -11,7 +11,7 @@ export const site = {
   linkedin: null as string | null, // e.g. "https://www.linkedin.com/in/…"
   github: "https://github.com/divyamunderconfident",
   resume: "/resume.pdf", // placeholder PDF until the real one replaces public/resume.pdf
-  photo: null as string | null, // set to "/photo.jpg" once public/photo.jpg exists
+  photo: "/photo.png" as string | null, // background-removed cutout; null shows the placeholder
   roles: ["AI Engineer", "Product Manager", "Product Strategist", "AI Researcher", "Founder", "Builder"],
   bio: "I build AI products end to end and measure whether they work. Co-founder of Trido Rentals. IIT Roorkee ’28.",
 };

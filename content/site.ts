@@ -30,11 +30,35 @@ export const writing = [
   { title: "Beginner notes: How I use LLMs", kind: "Notes", href: null as string | null },
 ];
 
-export const experience = [
+// Internship details and numbers are from Divyam's resume. Entries with `highlights` also show as cards under Work.
+type Experience = { role: string; org: string; dates: string; stat?: { value: string; label: string }; highlights?: string[] };
+export const experience: Experience[] = [
   { role: "Convener, E-Summit ’27", org: "Entrepreneurship Cell, IIT Roorkee", dates: "[DATES]" },
-  { role: "Founders’ Office Intern", org: "HeadsUp AI", dates: "[DATES]" },
-  { role: "Intern", org: "DGTLmart", dates: "[DATES]" },
+  {
+    role: "Founders’ Office Intern",
+    org: "HeadsUp AI",
+    dates: "May 2026 – June 2026",
+    stat: { value: "10,000+", label: "users on the app I led product strategy for" },
+    highlights: [
+      "Built niche SaaS products, owning product development, GTM strategy and growth across 5+ AI products.",
+      "Led product strategy for the highest-performing app, driving user research and growth to 10,000+ users.",
+      "Directed go-to-market through competitor benchmarking and content strategy across 4+ product launches.",
+      "Ran monetization and growth initiatives with other teams to speed up product adoption.",
+    ],
+  },
+  {
+    role: "Market Research Intern",
+    org: "DGTLmart",
+    dates: "July 2025 – September 2025",
+    stat: { value: "10,000+", label: "creators on the influencer marketing platform" },
+    highlights: [
+      "Helped brands discover and collaborate with 10,000+ creators through a centralized influencer marketing platform.",
+      "Researched creator-economy trends and 15+ competitors to design brand funnels with 20+ product initiatives.",
+      "Developed a 90-day GTM roadmap and monetization strategy across SaaS, API and commission-based revenue models.",
+    ],
+  },
 ];
+export const internships = experience.filter((e) => e.highlights);
 
 // Captions describe only what is visible in each photo; [CAPTION] slots are still to be filled.
 const photos = [

@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { aiProjects, projects, ventures } from "@/content/projects";
-import { experience, site, steps, writing } from "@/content/site";
+import { experience, internships, site, steps, writing } from "@/content/site";
 import { Gallery } from "@/components/Gallery";
 import { RotatingRole } from "@/components/Motion";
 import { Button, Corner, Heading, Text } from "@/components/ui";
-import { ProjectCard, SkillsTile, VentureCard } from "@/components/work";
+import { InternshipCards, ProjectCard, SkillsTile, VentureCard } from "@/components/work";
 import { Contact, Photo, SiteNav } from "@/components/chrome";
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
         <div className="flex flex-wrap items-end justify-between gap-3">
           <Heading id="work-title">Work</Heading>
           <span className="text-[15px] text-grey">
-            {ventures.length} venture · {aiProjects.length} AI products
+            {aiProjects.length} AI products · {ventures.length} venture · {internships.length} internships
           </span>
         </div>
         <div id="ai-products" className="flex scroll-mt-6 flex-wrap items-baseline justify-between gap-2">
@@ -33,6 +33,11 @@ export default function Home() {
             <VentureCard key={p.slug} project={p} />
           ))}
         </div>
+        <div id="internships" className="mt-5 flex scroll-mt-6 flex-wrap items-baseline justify-between gap-2">
+          <h3 className="m-0 font-sora text-[32px] font-semibold tracking-[-0.03em]">Internships</h3>
+          <span className="text-[15px] text-grey">Product, growth and GTM</span>
+        </div>
+        <InternshipCards />
       </section>
 
       <HowIWork />
@@ -237,16 +242,16 @@ function About() {
             I study civil engineering at IIT Roorkee, and somewhere along the way I got hooked on building AI products. I learn by shipping: every project starts as a PRD and ends as a live site with real data behind it, and an honest list of what didn’t work.
           </p>
           <p className="m-0 max-w-[60ch] text-[17px] leading-relaxed">
-            I’m the Convener of E-Summit ’27 at IIT Roorkee’s Entrepreneurship Cell, and I’ve interned in the Founders’ Office at HeadsUp AI and at DGTLmart.
+            I’m the Convener of E-Summit ’27 at IIT Roorkee’s Entrepreneurship Cell, and I’ve interned in the Founders’ Office at HeadsUp AI and in market research at DGTLmart.
           </p>
         </div>
         <div id="experience" className="reveal flex flex-col gap-4">
           <h3 className="m-0 font-sora text-[28px] font-semibold tracking-[-0.03em]">Experience</h3>
           <ol className="m-0 list-none border-l-2 border-line p-0 pl-6">
-            {[{ role: "Co-founder", org: projects[0].name, dates: "[DATES]" }, ...experience].map((e) => (
+            {[{ role: "Co-founder", org: projects[0].name, dates: "" }, ...experience].map((e) => (
               <li key={e.org} className="relative pb-6 last:pb-0">
                 <span aria-hidden="true" className="absolute top-1.5 -left-[31px] h-3 w-3 rounded-full border-2 border-bg bg-accent" />
-                <span className="font-mono text-xs text-grey"><Text>{e.dates}</Text></span>
+                {e.dates && <span className="font-mono text-xs text-grey"><Text>{e.dates}</Text></span>}
                 <p className="m-0 font-sora text-lg font-semibold">{e.role}</p>
                 <p className="m-0 text-grey">{e.org}</p>
               </li>

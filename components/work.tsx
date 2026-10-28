@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { projects, skills, skillId, type Project } from "@/content/projects";
-import { tech } from "@/content/site";
+import { internships, tech } from "@/content/site";
 import { Signature } from "./Signature";
 import { Arrow, Button, Corner, Pill, Text } from "./ui";
 
@@ -108,7 +108,6 @@ export function VentureCard({ project }: { project: Project }) {
         <div className="flex flex-wrap gap-2">
           <Pill className="bg-sun font-semibold text-[#16161A]">Venture</Pill>
           <Pill className="border border-[#8A8A93]">Co-founder</Pill>
-          <Pill className="border border-[#8A8A93]"><Text>[DATES]</Text></Pill>
           <Pill className="border border-[#8A8A93]"><Text>{project.status}</Text></Pill>
         </div>
         <h3 className="m-0 font-sora text-[clamp(40px,5vw,76px)] leading-[0.95] font-bold tracking-[-0.04em]">{project.name}</h3>
@@ -215,6 +214,35 @@ export function SkillsTile() {
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+export function InternshipCards() {
+  const tints = ["bg-violet", "bg-mint"];
+  return (
+    <div className="grid grid-cols-[repeat(auto-fit,minmax(min(420px,100%),1fr))] gap-5">
+      {internships.map((e, i) => (
+        <article key={e.org} className={`reveal relative flex flex-col gap-4 rounded-[28px] p-6 text-[#16161A] sm:p-[30px] ${tints[i % 2]}`}>
+          <Corner size={14} color="#16161A" className="absolute top-[22px] right-[22px]" />
+          <span className="self-start rounded-full bg-white/60 px-3 py-1 font-mono text-[12px]">{e.dates}</span>
+          <div>
+            <h4 className="m-0 font-sora text-[clamp(26px,2.6vw,32px)] leading-[1.05] font-semibold tracking-[-0.035em]">{e.org}</h4>
+            <p className="m-0 mt-1 text-base font-medium">{e.role}</p>
+          </div>
+          {e.stat && (
+            <div className="flex items-baseline gap-3 rounded-[18px] bg-white/55 p-4">
+              <span className="font-sora text-[30px] font-semibold tracking-[-0.03em]">{e.stat.value}</span>
+              <span className="text-[13px] leading-[1.35]">{e.stat.label}</span>
+            </div>
+          )}
+          <ul className="m-0 flex list-disc flex-col gap-2 pl-5 text-[15px] leading-normal">
+            {e.highlights!.map((h) => (
+              <li key={h}>{h}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
     </div>
   );
 }

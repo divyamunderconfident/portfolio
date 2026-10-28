@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRef } from "react";
 import { gallery } from "@/content/site";
 import { Text } from "./ui";
@@ -27,12 +28,13 @@ export function Gallery() {
         {gallery.map((ph, i) => (
           <figure
             key={i}
-            className="m-0 flex aspect-[4/3] max-h-[236px] shrink-0 snap-start flex-col justify-between rounded-2xl p-3.5 text-[#16161A]"
+            className="relative m-0 flex aspect-[4/3] max-h-[236px] shrink-0 snap-start flex-col items-start gap-1.5 overflow-hidden rounded-2xl p-3.5 text-[#16161A]"
             style={{ background: ph.tint }}
           >
-            <span className="font-mono text-[11px]">{String(i + 1).padStart(2, "0")} / 06</span>
-            {ph.src ? null : <span className="self-center text-sm font-semibold"><Text>[PHOTO]</Text></span>}
-            <figcaption className="text-[13px]"><Text>{ph.caption}</Text></figcaption>
+            {ph.src && <Image src={ph.src} alt={ph.alt} fill sizes="320px" className="object-cover object-[50%_30%]" />}
+            <span className={`relative self-start font-mono text-[11px] ${ph.src ? "rounded-full bg-white/85 px-2 py-0.5" : ""}`}>{String(i + 1).padStart(2, "0")} / 06</span>
+            <figcaption className={`relative self-start text-[13px] ${ph.src ? "rounded-full bg-white/90 px-2.5 py-1 font-medium" : ""}`}><Text>{ph.caption}</Text></figcaption>
+            {!ph.src && <span className="m-auto text-sm font-semibold"><Text>[PHOTO]</Text></span>}
           </figure>
         ))}
       </div>

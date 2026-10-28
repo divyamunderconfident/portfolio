@@ -36,10 +36,17 @@ export const experience = [
   { role: "Intern", org: "DGTLmart", dates: "[DATES]" },
 ];
 
-export const gallery = ["#A9DDD3", "#FFC66E", "#B9B1EE", "#F2B7EF", "#D9D7E6", "#A9DDD3"].map((tint) => ({
+// Captions describe only what is visible in each photo; [CAPTION] slots are still to be filled.
+const photos = [
+  { src: "/gallery/tech-gc.jpg", alt: "Divyam with four teammates holding trophies and Tech GC 2025–26 medals", caption: "Tech GC 2025–26" },
+  { src: "/gallery/srcc-case.jpg", alt: "Divyam's team on stage receiving a certificate at the SRCC Case Championship", caption: "Case Championship, SRCC" },
+  { src: "/gallery/metro.jpg", alt: "Divyam and two teammates in suits on the metro, one holding a laptop", caption: "On the way, in suits" },
+];
+export const gallery = ["#A9DDD3", "#FFC66E", "#B9B1EE", "#F2B7EF", "#D9D7E6", "#A9DDD3"].map((tint, i) => ({
   tint,
-  src: null as string | null,
-  caption: "[CAPTION]",
+  src: photos[i]?.src ?? null,
+  alt: photos[i]?.alt ?? "",
+  caption: photos[i]?.caption ?? "[CAPTION]",
 }));
 
 // Tech marquee in the skills tile. Logos: Simple Icons (CC0).

@@ -24,16 +24,10 @@ export const steps = [
   { title: "Ship", body: "It goes live for anyone to try, with its limits written down." },
 ];
 
-export const writing = [
-  { title: "Product requirement docs for 6 AI products", kind: "PRDs", href: null as string | null },
-  { title: "Beginner notes: Karpathy’s Deep Dive into LLMs", kind: "Notes", href: null as string | null },
-  { title: "Beginner notes: How I use LLMs", kind: "Notes", href: null as string | null },
-];
-
 // Internship numbers are from Divyam's resume. Entries with `stats` also show as cards under Work.
 type Experience = { role: string; org: string; dates: string; stats?: { value: string; label: string }[] };
 export const experience: Experience[] = [
-  { role: "Convener, E-Summit ’27", org: "Entrepreneurship Cell, IIT Roorkee", dates: "[DATES]" },
+  { role: "Convener, E-Summit ’27", org: "Entrepreneurship Cell, IIT Roorkee", dates: "" },
   {
     role: "Founders’ Office Intern",
     org: "HeadsUp AI",

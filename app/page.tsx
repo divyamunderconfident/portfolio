@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { aiProjects, projects, ventures } from "@/content/projects";
-import { experience, internships, site, steps, writing } from "@/content/site";
+import { experience, internships, site, steps } from "@/content/site";
 import { Gallery } from "@/components/Gallery";
 import { RotatingRole } from "@/components/Motion";
 import { Button, Corner, Heading, Text } from "@/components/ui";
@@ -41,7 +41,6 @@ export default function Home() {
       </section>
 
       <HowIWork />
-      <Writing />
       <About />
       <Contact />
     </main>
@@ -192,30 +191,6 @@ function HowIWork() {
           </li>
         ))}
       </ol>
-    </section>
-  );
-}
-
-function Writing() {
-  return (
-    <section id="writing" aria-labelledby="writing-title" className="flex scroll-mt-6 flex-col gap-7">
-      <Heading id="writing-title" size="md">Writing &amp; notes</Heading>
-      <ul className="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))] gap-4 p-0">
-        {writing.map((w) => (
-          <li key={w.title} className="reveal relative flex min-h-[180px] flex-col justify-between gap-6 rounded-3xl border border-line bg-surface p-6">
-            <Corner />
-            <span className="font-mono text-xs text-grey">{w.kind}</span>
-            <h3 className="m-0 font-sora text-[22px] leading-tight font-semibold tracking-[-0.02em]">
-              {w.href ? <a href={w.href} className="stretch no-underline hover:text-accent-ink">{w.title}</a> : w.title}
-            </h3>
-            {!w.href && (
-              <span className="text-sm text-grey">
-                Link coming <Text>{"[LINK]"}</Text>
-              </span>
-            )}
-          </li>
-        ))}
-      </ul>
     </section>
   );
 }

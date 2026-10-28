@@ -58,18 +58,14 @@ export const experience: Experience[] = [
 ];
 export const internships = experience.filter((e) => e.stats);
 
-// Captions describe only what is visible in each photo; [CAPTION] slots are still to be filled.
+// Captions describe only what is visible in each photo.
 const photos = [
   { src: "/gallery/tech-gc.jpg", alt: "Divyam with four teammates holding trophies and Tech GC 2025–26 medals", caption: "Tech GC 2025–26" },
   { src: "/gallery/srcc-case.jpg", alt: "Divyam's team on stage receiving a certificate at the SRCC Case Championship", caption: "Case Championship, SRCC" },
   { src: "/gallery/metro.jpg", alt: "Divyam and two teammates in suits on the metro, one holding a laptop", caption: "On the way, in suits" },
 ];
-export const gallery = ["#A9DDD3", "#FFC66E", "#B9B1EE", "#F2B7EF", "#D9D7E6", "#A9DDD3"].map((tint, i) => ({
-  tint,
-  src: photos[i]?.src ?? null,
-  alt: photos[i]?.alt ?? "",
-  caption: photos[i]?.caption ?? "[CAPTION]",
-}));
+// Add a photo to `photos` to add a slide.
+export const gallery = photos.map((ph, i) => ({ ...ph, tint: ["#A9DDD3", "#FFC66E", "#B9B1EE", "#F2B7EF"][i % 4] }));
 
 // Tech marquee in the skills tile. Logos: Simple Icons (CC0).
 export const tech = [

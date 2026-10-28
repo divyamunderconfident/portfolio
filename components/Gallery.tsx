@@ -32,7 +32,7 @@ export function Gallery() {
             style={{ background: ph.tint }}
           >
             {ph.src && <Image src={ph.src} alt={ph.alt} fill sizes="320px" className="object-cover object-[50%_30%]" />}
-            <span className={`relative self-start font-mono text-[11px] ${ph.src ? "rounded-full bg-white/85 px-2 py-0.5" : ""}`}>{String(i + 1).padStart(2, "0")} / 06</span>
+            <span className={`relative self-start font-mono text-[11px] ${ph.src ? "rounded-full bg-white/85 px-2 py-0.5" : ""}`}>{String(i + 1).padStart(2, "0")} / {String(gallery.length).padStart(2, "0")}</span>
             <figcaption className={`relative self-start text-[13px] ${ph.src ? "rounded-full bg-white/90 px-2.5 py-1 font-medium" : ""}`}><Text>{ph.caption}</Text></figcaption>
             {!ph.src && <span className="m-auto text-sm font-semibold"><Text>[PHOTO]</Text></span>}
           </figure>
